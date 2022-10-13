@@ -50,8 +50,8 @@ alter table player add constraint fk_id_guild foreign key (guild_id) references 
 
 
 SELECT * FROM player
-Create OR REPLACE procedure UpgradeGuild(
-  guild_id  integer
+CREATE OR REPLACE procedure Upgrade_G (
+  player_id  int
 )
 LANGUAGE plpgsql
 AS $$
@@ -59,8 +59,9 @@ BEGIN
   -- Update Subir al player al guild de su nivel
   UPDATE player
   SET guild_id = 2
-  WHERE id = player_id
+  WHERE id = player_id;
+  
   commit;
-$$;
+end$$;
 
-CALL UpgradeGuild(5);
+CALL Upgrade_G(5);
